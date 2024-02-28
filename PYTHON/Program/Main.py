@@ -11,14 +11,9 @@ mobil1 = Car("B1234CD", "Honda", "2021", "Putih", 6, 4)
 mobil2 = Car("B5678EF", "Toyota", "2020", "Hitam", 4, 4)
 motor1 = Motorcycle("B1234GH", "Honda", "2022", "Hitam", "Matic", "10 liter")
 motor2 = Motorcycle("B5435IJ", "Yamaha", "2020", "Merah", "Matic", "5 liter")
-motor3  = Motorcycle("B9876KL", "Kawasaki", "2021", "Hitam", "Sport", "20 liter") 
+motor3  = Motorcycle("B9876KL", "Kawasaki", "2021", "Hitam", "Sport", "20 liter")
 
-# listKendaraan = []
-# listKendaraan.append(mobil1)
-# listKendaraan.append(mobil2)
-# listKendaraan.append(motor1)
-# listKendaraan.append(motor2)
-# listKendaraan.append(motor3)
+parkir = ParkingLot("10", "5")
 
 garasi = Garage("Garasi Utama", "100 m2")
 
@@ -27,19 +22,31 @@ garasi.tambahKendaraan(mobil2)
 garasi.tambahKendaraan(motor1)
 garasi.tambahKendaraan(motor2)
 garasi.tambahKendaraan(motor3)
+garasi.setParkingLot(parkir)
 
-print("Informasi Garasi")
+print("---INFORMASI GARASI---")
 # garasi.printKendaraan()
 print("Nama Garasi : " + garasi.getNamaGarasi())
 print("Luas Garasi : " + garasi.getLuasGarasi())
-print("Daftar Kendaraan :")
+print("Kapasitas : " + garasi.getParkingLot().getKapasitas())
+print("Jumlah Kendaraan : " + garasi.getParkingLot().getJumlahKendaraan())
 print()
+print("Daftar Kendaraan :")
 for i in garasi.getDaftarKendaraan():
-    print("Plat Nomor : " + i.getPlatNomor())
-    print("Merk : " + i.getMerk())
-    print("Tahun Produksi : " + i.getTahunProduksi())
-    print("Warna : " + i.getWarna())
+    if isinstance(i, Car): 
+        print("->  Jenis Kendaraan : Mobil")
+    elif isinstance(i, Motorcycle):
+        print("->  Jenis Kendaraan : Motor")    
+    print("->  Plat Nomor : " + i.getPlatNomor())
+    print("->  Merk : " + i.getMerk())
+    print("->  Tahun Produksi : " + i.getTahunProduksi())
+    print("->  Warna : " + i.getWarna())
+    if isinstance(i, Car):
+        print("->  Jumlah Kursi : " + str(i.getJumlahKursi()))
+        print("->  Jumlah Pintu : " + str(i.getJumlahPintu()))
+    elif isinstance(i, Motorcycle):
+        print("->  Jenis Motor : " + i.getJenisMotor())
+        print("->  Kapasitas Tangki : " + str(i.getKapasitasTangki()))
     print()
 
-
-    
+  
